@@ -1,8 +1,0 @@
----
-
-unbound_packages:
-  - unbound
-
-unbound_reloaded_state: "restarted"
-
-# vim: set ts=2 sw=2:

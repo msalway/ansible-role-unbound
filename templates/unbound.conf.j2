@@ -20,7 +20,7 @@ server:
     log-time-ascii: {{ unbound_log_time_ascii }}
 {% endif %}
 {% if unbound_chroot is defined %}
-    chroot: {{ unbound_chroot }}
+    chroot: "{{ unbound_chroot }}"
 {% endif %}
 {% if unbound_log_queries is defined %}
     log-queries: {{ unbound_log_queries }}
@@ -304,7 +304,7 @@ server:
 {% endif %}
 
 {% if unbound_root_hints is defined %}
-    root-hints: {{ unbound_root_hints }}
+    root-hints: "{{ unbound_root_hints }}"
 {% endif %}
 
 {% for private_addr in unbound_private_addresses %}
@@ -345,10 +345,10 @@ server:
 {% endfor %}
 
 {% if unbound_trust_anchor_file is defined %}
-    trust-anchor-file: {{ unbound_trust_anchor_file }}
+    trust-anchor-file: "{{ unbound_trust_anchor_file }}"
 {% endif %}
 {% if unbound_auto_trust_anchor_file is defined %}
-    auto-trust-anchor-file: {{ unbound_auto_trust_anchor_file }}
+    auto-trust-anchor-file: "{{ unbound_auto_trust_anchor_file }}"
 {% endif %}
 {% if unbound_add_holddown is defined %}
     add-holddown: {{ unbound_add_holddown }}
@@ -366,7 +366,7 @@ server:
     trust-anchor: {{ record }}
 {% endfor %}
 {% for file in unbound_trusted_keys_files %}
-    trusted-keys-file: {{ file }}
+    trusted-keys-file: "{{ file }}"
 {% endfor %}
 
 {% if unbound_val_override_date is defined %}
@@ -403,8 +403,8 @@ server:
 {% if unbound_dns64_synthall is defined %}
     dns64-synthall: {{ unbound_dns64_synthall }}
 {% endif %}
-
 {% if unbound_tls_cert_bundle is defined %}
+
     tls-cert-bundle: {{ unbound_tls_cert_bundle }}
 {% endif %}
 
@@ -445,8 +445,8 @@ rpz:
 {% endfor %}
 
 {% endfor %}
-
 {% for stub_zone in unbound_stub_zones %}
+
 stub-zone:
 {% for key, value in stub_zone.items() %}
 {%- if value is not string and value is iterable %}
@@ -457,10 +457,9 @@ stub-zone:
     {{ key }}: {{ value }}
 {% endif %}
 {% endfor %}
-
 {% endfor %}
-
 {% for forward_zone in unbound_forward_zones %}
+
 forward-zone:
 {% for key, value in forward_zone.items() %}
 {% if value is not string and value is iterable %}
@@ -471,22 +470,20 @@ forward-zone:
     {{ key }}: {{ value }}
 {% endif %}
 {% endfor %}
-
 {% endfor %}
-
 {% for view in unbound_views %}
+
 view:
     {% for i in view %}{{ i }}
     {% endfor %}
-
 {% endfor %}
 {% if unbound_python_script is defined %}
+
 python:
     python-script: {{ unbound_python_script }}
-
 {% endif %}
-
 {% if unbound_cachedb_backend is defined %}
+
 cachedb:
     backend: {{ unbound_cachedb_backend }}
     {% if unbound_cachedb_secret_seed is defined %}
@@ -502,7 +499,7 @@ cachedb:
     redis-timeout: {{ unbound_cachedb_redis_timeout }}
     {% endif %}
 {% endif %}
-
 {% for include in unbound_post_includes %}
+
 include: {{ include }}
 {% endfor %}
