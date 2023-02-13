@@ -6,6 +6,7 @@ unbound_packages:
 unbound_chroot: ''
 unbound_auto_trust_anchor_file: /var/lib/unbound/root.key
 unbound_root_hints: /etc/unbound/root.hints
+unbound_install_root_hints: true
 unbound_reloaded_state: "restarted"
 unbound_trusted_keys_files:
   - "/etc/unbound/keys.d/*.key"

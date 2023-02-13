@@ -2,6 +2,7 @@
 unbound_conf_path: "/etc/unbound/unbound.conf"
 unbound_enable_service: true
 unbound_service_name: "unbound"
+unbound_install_root_hints: false
 
 
 ### Includes ###

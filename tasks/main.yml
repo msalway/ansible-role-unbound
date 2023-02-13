@@ -9,9 +9,20 @@
 - name: include dist_vars.yml
   ansible.builtin.import_tasks: dist_vars.yml
 
+- name: fetch root.hints
+  ansible.builtin.import_tasks: fetch_root_hints.yml
+  when: unbound_install_root_hints
+
 - name: include install.yml
   ansible.builtin.import_tasks: install.yml
   when: unbound_packages is defined
+
+- name: install root_hints
+  ansible.builtin.copy:
+    src: root.hints
+    dest: '{{ unbound_root_hints }}'
+    mode: '0644'
+  when: unbound_install_root_hints
 
 - name: Configure unbound.conf
   template:
