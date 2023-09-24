@@ -5,6 +5,8 @@ unbound_packages:
 
 unbound_chroot: ''
 unbound_auto_trust_anchor_file: /var/lib/unbound/root.key
+unbound_auto_trust_anchor_owner: unbound
+unbound_auto_trust_anchor_group: unbound
 unbound_root_hints: /etc/unbound/root.hints
 unbound_install_root_hints: true
 unbound_reloaded_state: "restarted"

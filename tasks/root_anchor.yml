@@ -7,6 +7,8 @@
     mode: "u=rw,g=r,o=r"
     owner: root
     group: root
+    access_time: preserve
+    modification_time: preserve
   when: |
     unbound_auto_trust_anchor_owner is undefined and
     unbound_auto_trust_anchor_group is undefined
@@ -18,6 +20,8 @@
     mode: "u=rw,g=r,o=r"
     owner: "{{ unbound_auto_trust_anchor_owner }}"
     group: "{{ unbound_auto_trust_anchor_group }}"
+    access_time: preserve
+    modification_time: preserve
   when: |
     unbound_auto_trust_anchor_owner is defined and
     unbound_auto_trust_anchor_group is defined
