@@ -431,8 +431,8 @@ remote-control:
 {% if unbound_control_cert_file is defined %}
     control-cert-file: {{ unbound_control_cert_file }}
 {% endif %}
-
 {% for rpz_zone in unbound_rpz_zones %}
+
 rpz:
 {% for key, value in rpz_zone.items() %}
 {%- if value is not string and value is iterable %}
@@ -443,7 +443,6 @@ rpz:
     {{ key }}: {{ value }}
 {% endif %}
 {% endfor %}
-
 {% endfor %}
 {% for stub_zone in unbound_stub_zones %}
 
