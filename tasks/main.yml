@@ -41,7 +41,7 @@
 
 - name: include root_anchor.yml
   ansible.builtin.import_tasks: root_anchor.yml
-  when: unbound_auto_trust_anchor_file|default(false)
+  when: unbound_auto_trust_anchor_file is defined
 
 # Cannot move this part as the `verify` component of the previous task, because
 # unbound-checkconf fails if the file is outside {{ unbound_directory }}
